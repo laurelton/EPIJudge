@@ -4,12 +4,12 @@ from test_framework import generic_test
 
 
 def can_reach_end(A: List[int]) -> bool:
-    max_index = 0
-    for i, val in enumerate(A):
-        if max_index >= i:
-            max_index = max(val + i, max_index)
+    l = len(A) - 1
+    for r, val in reversed(list(enumerate(A))):
+        if r + val >= l:
+            l = r
 
-    return max_index >= len(A) - 1
+    return l == 0
 
 
 if __name__ == '__main__':

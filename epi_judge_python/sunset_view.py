@@ -3,9 +3,14 @@ from typing import Iterator, List
 from test_framework import generic_test
 
 
-def examine_buildings_with_sunset(sequence: Iterator[int]) -> List[int]:
-    # TODO - you fill in here.
-    return []
+def examine_buildings_with_sunset(sequence: List[int]) -> List[int]:
+    stack: List[int] = []
+
+    for i in range(len(sequence) - 1, -1, -1):
+        if not len(stack) or sequence[i] > sequence[stack[-1]]:
+            stack.append(i)
+
+    return stack
 
 
 def examine_buildings_with_sunset_wrapper(sequence):
